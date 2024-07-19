@@ -4,9 +4,9 @@
   align-items: center;
   padding: 20px;
   background-color: #da9e1b96;
-  position: sticky;
+  /* position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 100; */
 }
 
 .input {
@@ -38,9 +38,9 @@
 
 .header {
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   background-color: white;
   padding: 10px 0;
-  z-index: 1000;
+  /* z-index: 1000; */
 }

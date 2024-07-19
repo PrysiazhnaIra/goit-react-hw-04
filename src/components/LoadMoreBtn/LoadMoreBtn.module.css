@@ -1,0 +1,23 @@
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #c69915;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #957514;
+  outline: none;
+}
+
+.btnBlock {
+  display: flex;
+  justify-content: center;
+}
