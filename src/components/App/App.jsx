@@ -20,15 +20,18 @@ function App() {
     async function fetchImages() {
       try {
         setLoading(true);
-        const response = await axios.get("https://api.unsplash.com/photos", {
-          params: {
-            query,
-            page,
-            client_id: "iB5AgNQ2CEuOiViT6IK8Ly0JMDb3rSWRZ7nt2ojq3AU",
-          },
-        });
+        const response = await axios.get(
+          "https://api.unsplash.com/search/photos",
+          {
+            params: {
+              query,
+              page,
+              client_id: "iB5AgNQ2CEuOiViT6IK8Ly0JMDb3rSWRZ7nt2ojq3AU",
+            },
+          }
+        );
         console.log(response);
-        setImages((prevImages) => [...prevImages, ...response.data]);
+        setImages((prevImages) => [...prevImages, ...response.data.results]);
       } catch (error) {
         setError(true);
       } finally {
