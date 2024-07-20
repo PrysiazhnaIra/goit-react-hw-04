@@ -20,4 +20,7 @@
 .btnBlock {
   display: flex;
   justify-content: center;
+  background-color: #da9e1b96;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
