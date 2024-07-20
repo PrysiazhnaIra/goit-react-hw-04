@@ -6,6 +6,10 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import axios from "axios";
+import ImageModal from "../ImageModal/ImageModal";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function App() {
   const [images, setImages] = useState([]);
@@ -13,6 +17,7 @@ function App() {
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     if (!query) return;
@@ -51,6 +56,14 @@ function App() {
     setPage((prevPage) => prevPage + 1);
   };
 
+  const openModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
@@ -58,7 +71,17 @@ function App() {
       {error && (
         <p>Whoops, something went wrong! Please try reloading this page!</p>
       )}
-      {images.length > 0 && <ImageGallery images={images} />}
+      {images.length > 0 && (
+        <ImageGallery images={images} openModal={openModal} />
+      )}
+      {selectedImage && (
+        <ImageModal
+          isOpen={!!selectedImage}
+          bigImage={selectedImage.urls.regular}
+          imageDescription={selectedImage.alt_description}
+          onClose={closeModal}
+        />
+      )}
       {loading && <Loader />}
       {images.length > 0 && !loading && (
         <LoadMoreBtn onClick={loadMoreImages} />
