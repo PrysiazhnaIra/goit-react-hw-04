@@ -29,6 +29,7 @@ function App() {
           "https://api.unsplash.com/search/photos",
           {
             params: {
+              orientation: "landscape",
               query,
               page,
               client_id: "iB5AgNQ2CEuOiViT6IK8Ly0JMDb3rSWRZ7nt2ojq3AU",
