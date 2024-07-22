@@ -48,9 +48,13 @@ function App() {
   }, [query, page]);
 
   const handleSearch = (searchQuery) => {
-    setQuery(searchQuery);
-    setPage(1);
-    setImages([]);
+    setQuery((prevQuery) => {
+      if (searchQuery != prevQuery) {
+        setPage(1);
+        setImages([]);
+      }
+      return searchQuery;
+    });
   };
 
   const loadMoreImages = () => {
